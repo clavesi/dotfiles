@@ -21,6 +21,7 @@ return {
 			highlight = {
 				enable = true, -- Syntax highlighting
 				additional_vim_regex_highlighting = false, -- Disable legacy regex-based highlighting
+                disable = { "latex" },
 			},
 			indent = { enable = true }, -- Treesitter-based indentation
 		})

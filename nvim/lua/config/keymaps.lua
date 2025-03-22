@@ -1,5 +1,8 @@
 local builtin = require("telescope.builtin")
 
+vim.g.mapleader = " "
+vim.g.localleader = "\\"
+
 -- Save file
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 -- Quit Neovim
@@ -30,3 +33,8 @@ vim.keymap.set("n", "<leader>ltd", builtin.lsp_type_definitions, { desc = "Type 
 
 -- Neo-Tree
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle Neo-tree" })
+
+-- VimTex
+vim.keymap.set("n", "<leader>lc", ":VimtexCompile<CR>", { desc = "Compile Latex" })
+vim.keymap.set("n", "<leader>lq", ":VimtexStop<CR>", { desc = "Stop LaTeX Compilation" })
+vim.keymap.set("n", "<leader>lp", ":VimtexViewer<CR>", { desc = "Open PDF Viewer" })

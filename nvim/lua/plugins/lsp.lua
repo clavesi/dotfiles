@@ -12,7 +12,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },  -- Make sure mason is loaded first
         config = function()
-            local servers = { }
+            local servers = { "texlab", "ocamllsp" }
             -- Set up mason-lspconfig to automatically install and configure LSP servers
             require("mason-lspconfig").setup({
                 ensure_installed = servers,  -- List of LSP servers
@@ -56,6 +56,10 @@ return {
                         },
                     },
                 },
+            })
+
+            lspconfig.ocamllsp.setup({
+                on_attach = on_attach,
             })
         end
     },
