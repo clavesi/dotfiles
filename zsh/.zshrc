@@ -107,6 +107,12 @@ source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # zsh-autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# zoxide
+eval "$(zoxide init zsh)"
+# fzf
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 source ~/.profile
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
