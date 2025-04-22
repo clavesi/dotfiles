@@ -113,6 +113,13 @@ eval "$(zoxide init zsh)"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
+# MOTD
+if [[ -f "$HOME/motd.zsh" ]]; then
+    source "$HOME/motd.zsh"
+else
+    echo "MOTD NOT FOUND"
+fi
+
 source ~/.profile
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
