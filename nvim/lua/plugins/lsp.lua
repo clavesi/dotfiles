@@ -3,26 +3,21 @@ return {
     {
         "williamboman/mason.nvim",
         config = function()
-            require("mason").setup()  -- Initialize Mason
+            require("mason").setup() -- Initialize Mason
         end,
     },
 
     -- mason-lspconfig plugin
     {
         "williamboman/mason-lspconfig.nvim",
-        dependencies = { "williamboman/mason.nvim" },  -- Make sure mason is loaded first
+        dependencies = { "williamboman/mason.nvim" }, -- Make sure mason is loaded first
         config = function()
-            local servers = { "texlab", "ocamllsp" }
+            local servers = { "lua_ls", "texlab" }
             -- Set up mason-lspconfig to automatically install and configure LSP servers
             require("mason-lspconfig").setup({
-                ensure_installed = servers,  -- List of LSP servers
-                automatic_installation = true,    -- Automatically install missing LSP servers
+                ensure_installed = servers,    -- List of LSP servers
+                automatic_installation = true, -- Automatically install missing LSP servers
             })
-
-            -- Set up each LSP server
-            for _, lsp in ipairs(servers) do
-                require("lspconfig")[lsp].setup({})
-            end
         end,
     },
 
@@ -30,37 +25,36 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            -- Custom setup for lua_ls (Lua Language Server)
             local lspconfig = require("lspconfig")
 
-            lspconfig.lua_ls.setup({
-                on_attach = function(client, bufnr)
-                -- Define key mappings for LSP actions
-                    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-                end,
-                capabilities = vim.lsp.protocol.make_client_capabilities(),
+            lspconfig.lua_ls.setup {
                 settings = {
                     Lua = {
                         runtime = {
-                            version = "LuaJIT", -- or "Lua 5.1" or whatever version you're using
-                            path = vim.split(package.path, ";"),
+                            -- Tell the language server which version of Lua you're using
+                            -- (most likely LuaJIT in the case of Neovim)
+                            version = 'LuaJIT',
                         },
                         diagnostics = {
-                            globals = { "vim" },  -- Define global variables to avoid warnings
+                            -- Get the language server to recognize the `vim` global
+                            globals = {
+                                'vim',
+                                'require'
+                            },
                         },
                         workspace = {
-                            library = vim.api.nvim_get_runtime_file("", true),  -- Automatically include runtime files
+                            -- Make the server aware of Neovim runtime files
+                            library = vim.api.nvim_get_runtime_file("", true),
                         },
+                        -- Do not send telemetry data containing a randomized but unique identifier
                         telemetry = {
-                            enable = false,  -- Disable telemetry if not needed
+                            enable = false,
                         },
                     },
                 },
-            })
+            }
 
-            lspconfig.ocamllsp.setup({
-                on_attach = on_attach,
-            })
+            lspconfig.texlab.setup({})
         end
     },
 }

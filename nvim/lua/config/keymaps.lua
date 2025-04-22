@@ -11,6 +11,8 @@ vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit Neovim" })
 vim.keymap.set("n", "<leader>wq", ":wq<CR>", { desc = "Save and Quit" })
 -- Force Quit (without saving)
 vim.keymap.set("n", "<leader>Q", ":q!<CR>", { desc = "Force Quit (discard changes)" })
+-- Format Document
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format Document" })
 
 -- Telescope
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
