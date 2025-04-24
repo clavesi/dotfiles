@@ -15,6 +15,10 @@ config.font_size = 12.0
 config.use_fancy_tab_bar = false 
 config.tab_bar_at_bottom = true
 
+-- Default size on initial launch
+config.initial_cols = 100
+config.initial_rows = 30
+
 if wezterm.target_triple == "x86_64-pc-windows-msvc" or wezterm.target_triple == "aarch64-pc-windows-msvc" then
     config.default_prog = { 'pwsh' }
 else
