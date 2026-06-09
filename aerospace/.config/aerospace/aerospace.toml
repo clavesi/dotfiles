@@ -230,10 +230,6 @@ automatically-unhide-macos-hidden-apps = false
     run = "move-node-to-workspace S"
 
 [[on-window-detected]]
-    if.app-id = 'org.alacritty'
-    run = "move-node-to-workspace T"
-
-[[on-window-detected]]
     if.app-id = 'net.kovidgoyal.kitty'
     run = "move-node-to-workspace T"
 
