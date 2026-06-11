@@ -1,8 +1,5 @@
 local map = vim.keymap.set
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- Better esacpe
 map("i", "jk", "<ESC>")
 
