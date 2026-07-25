@@ -1,5 +1,4 @@
-# Place a copy of this config to ~/.aerospace.toml
-# After that, you can edit ~/.aerospace.toml to your liking
+config-version = 2
 
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
@@ -36,7 +35,7 @@ on-focus-changed = "move-mouse window-lazy-center"
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
-automatically-unhide-macos-hidden-apps = false
+automatically-unhide-macos-hidden-apps = true
 
 # Possible values: (qwerty|dvorak|colemak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
@@ -216,6 +215,14 @@ automatically-unhide-macos-hidden-apps = false
 [[on-window-detected]]
     if.app-id = 'com.hnc.Discord'
     run = "move-node-to-workspace D"
+
+[[on-window-detected]]
+    if.app-id = 'com.electron.dockerdesktop'
+    run = "move-node-to-workspace D"
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.finder'
+    run = "move-node-to-workspace E"
 
 [[on-window-detected]]
     if.app-id = 'notion.id'
